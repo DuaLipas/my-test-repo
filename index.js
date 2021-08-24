@@ -1,9 +1,12 @@
-console.log("This World");
+let url = `https://restcountries.eu/rest/v2/name/Malaysia`;
 
-// Working with APIs
-// Answer the following questions
-// - What's the endpoint (URL)?
-// - What query string/parameters do we need to provide?
-//  -   What are required parameters
-//  -   What are optional parameters do we need to add?
-// -    What HTTP method are we using?
+function waitForData(res) {
+  return res.json();
+}
+
+function handleData(data) {
+  let pop = data[0].population;
+  console.log(`The population of Malaysia is = ${pop}`);
+}
+
+fetch(url, {method: "GET"}).then(waitForData).then(handleData);
